@@ -68,11 +68,11 @@ local_css()
 # ------------------- تحميل النماذج -------------------
 @st.cache_resource
 def load_image_model():
-    return load_model(r"C:\Users\DELL\Downloads\Covid_19_downloadable.h5")
+    return load_model(r"c:\Users\bhais\Downloads\Covid_19_downloadable.h5")
 
 @st.cache_resource
 def load_audio_model():
-    return load_model(r"C:\Users\DELL\Downloads\cough_model_multi.h5")
+    return load_model(r"c:\Users\bhais\Downloads\cough_model_multi.h5")
 
 image_model = load_image_model()
 audio_model = load_audio_model()
