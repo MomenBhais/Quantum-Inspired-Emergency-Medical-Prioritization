@@ -1,4 +1,4 @@
-# Quantum-Inspired Emergency Medical Prioritization — Hackathon 2025
+# Quantum-Inspired Emergency Medical Prioritization — Hackathon 2026
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/UI-Streamlit-ff4b4b?logo=streamlit)
