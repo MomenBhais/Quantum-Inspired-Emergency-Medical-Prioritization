@@ -44,20 +44,70 @@ The project was honored with **7th place** in the **Arab AI Olympiad 2025**, sho
 
 ## 📂 Project Structure
 
-📦 PulmoAI-COVID-Detection
-┣ 📂 models/
-┃ ┣ lung_disease_model.h5 # Image model
-┃ ┗ cough_model_multi.h5 # Audio model
-┣ 📂 static/ # CSS, images
-┣ 📂 utils/ # Preprocessing
-┣ 📜 app.py # Main Streamlit app
-┣ 📜 requirements.txt # Dependencies
-┣ 📜 README.md # Documentation
-┗ 📜 LICENSE # MIT License
+# Quantum-Inspired Emergency Medical Prioritization
 
-yaml
-Copy
-Edit
+![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/UI-Streamlit-ff4b4b?logo=streamlit)
+![TensorFlow](https://img.shields.io/badge/Model-TensorFlow-orange?logo=tensorflow)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+
+> 🚀 **Submitted to the Quantum Computing Hackathon 2025** — a quantum-inspired approach to prioritizing emergency medical cases using multimodal AI (image + audio).
+
+---
+
+## 📌 Overview
+
+This repository contains the code and pretrained models for a quantum-inspired emergency triage system that combines chest X-ray image analysis and cough audio classification to assist rapid prioritization in emergency settings.
+
+The project was prepared as a submission to the **Quantum Computing Hackathon 2025**, exploring how classical deep-learning models can be augmented with quantum-inspired decision rules for more robust prioritization.
+
+---
+
+## 🚀 Features
+
+- 🖼️ **Chest X-ray Analysis**: Classifies X-ray images into COVID-19, Viral Pneumonia, or Normal.
+- 🔊 **Cough Audio Analysis**: Classifies cough recordings (uploaded or live) into symptomatic categories.
+- 🧪 **Dual-Modal Fusion**: Combines image and audio outputs using a quantum-inspired scoring heuristic to produce a triage priority.
+- 🌐 **Streamlit UI**: Lightweight web interface for quick evaluations.
+- 🎙️ **Live Audio Capture**: Optional microphone-based cough recording for rapid input.
+- 📁 **Cross-platform**: Works on Windows, Linux, and macOS.
+
+---
+
+## 🏗️ Tech Stack
+
+| Layer         | Tools & Libraries                                 |
+|---------------|---------------------------------------------------|
+| Language      | Python 3.8+                                       |
+| Interface     | Streamlit, HTML, CSS                              |
+| Deep Learning | TensorFlow / Keras, OpenCV, NumPy                 |
+| Audio         | Librosa, SoundFile, streamlit-webrtc              |
+| Models        | CNNs for images and spectrograms                  |
+| Deployment    | Local, Docker, or Cloud (optional)                |
+
+---
+
+## 📂 Project Structure
+
+Root of repository:
+
+```
+Quantum-Inspired Emergency Medical Prioritization/
+┣ Coughing sound & it Model/
+┃ ┣ cough_model_multi.h5
+┃ ┗ coughvid-dataset.ipynb
+┣ Photo for Lung & it Model/
+┃ ┣ Covid_19_downloadable.h5
+┃ ┗ covid-19-model.ipynb
+┣ StreamlitCode(GUI)/
+┃ ┣ covid19_app.py
+┃ ┣ health_check.py
+┃ ┣ run_app.bat
+┃ ┣ requirements.txt
+┃ ┗ test_quantum_triage.py
+┣ README.md
+┗ requirements.txt
+```
 
 ---
 
@@ -65,73 +115,90 @@ Edit
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.8+ (3.10+ recommended)
 - `pip`
-- `ffmpeg` (for audio processing)
+- `ffmpeg` (optional, for some audio processing backends)
 - Recommended: virtual environment
 
-### Setup Instructions
+### Quick Setup (Windows PowerShell)
 
-```bash
-# Clone the repository
-git clone https://github.com/MomenBhais/pulmoai-covid-app.git
-cd pulmoai-covid-app
-
-# (Optional) Create virtual environment
+```powershell
 python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
+venv\Scripts\Activate.ps1
+pip install -r "StreamlitCode(GUI)/requirements.txt"
+```
 
-# Install dependencies
-pip install -r requirements.txt
+### Run the Streamlit App
 
-# Run the application
-streamlit run app.py
-🎯 How It Works
-🖼️ Image Classification
-Input: Chest X-ray image (.jpg/.png)
+```powershell
+cd "StreamlitCode(GUI)"
+streamlit run covid19_app.py
+# Or use the bundled helper
+..\StreamlitCode(GUI)\run_app.bat
+```
 
-Processed using OpenCV
+---
 
-Resized to 250x250 and normalized
+## 🎯 How It Works (High level)
 
-Passed to CNN model
+Image classification:
+- Input: chest X-ray image (.jpg/.png)
+- Preprocessing: OpenCV resize/normalize
+- Model: CNN image classifier
+- Output: COVID-19, Viral Pneumonia, or Normal
 
-Output: COVID-19, Normal, or Viral Pneumonia
+Audio classification:
+- Input: cough .wav or live mic recording
+- Preprocessing: mel-spectrogram via Librosa
+- Model: CNN on spectrogram
+- Output: COVID-19–related signal / Symptomatic / Healthy
 
-🔊 Audio Classification
-Input: Cough .wav file or real-time mic recording
+Fusion & triage:
+- Outputs from both modalities are combined by a quantum-inspired scoring heuristic that produces a triage priority (e.g., high/medium/low).
 
-Transformed into mel-spectrogram via Librosa
+---
 
-Spectrogram resized to 64x64 and fed into a CNN model
+## 🧪 Model Summary
 
-Output: COVID-19, Symptomatic, or Healthy
+| Modality | Input | Model | Notes |
+|----------|-------|-------|-------|
+| Image    | Chest X-ray (RGB) | CNN | Pretrained H5 available in `Photo for Lung & it Model/` |
+| Audio    | Cough (WAV -> Mel) | CNN | Pretrained H5 in `Coughing sound & it Model/` |
 
-🧪 Model Info
-Modality	Input	Model Type	Accuracy
-Image	Chest X-ray (RGB)	CNN	95%
-Audio	Cough (WAV + Mel)	CNN	~90%
+---
 
-🧠 Future Improvements
-📱 Native mobile app (Flutter / React Native)
+## 🔧 Notes for Hackathon Submission
 
-🩺 Multi-label disease classification (e.g., TB, Asthma)
+- The submission emphasizes a hybrid approach: classical CNNs for perception plus quantum-inspired decision fusion for triage.
+- Ensure model file paths in `StreamlitCode(GUI)/covid19_app.py` and `health_check.py` point to the correct `.h5` files before deployment.
+- Add any metrics, logs, or demo recordings to support the hackathon submission.
 
-🌐 Multilingual support (Arabic, French, etc.)
+---
 
-🤖 Add AI interview bot for symptom checking
+## 🧠 Future Work
 
-🧑‍💻 Author
+- Experiment with true quantum/classical hybrid pipelines (Qiskit, PennyLane) for decision fusion.
+- Improve dataset diversity and robustness testing.
+- Add multilingual UI (Arabic, English, French) and accessibility improvements.
+
+---
+
+## 🧑‍💻 Author
+
 Momen Mohammed Bhais
 
-🌍 [LinkedIn Profile](https://www.linkedin.com/in/momen-bhais-b5739b317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
+- GitHub: https://github.com/MomenBhais
+- LinkedIn: https://www.linkedin.com/in/momen-bhais-b5739b317
+- Email: momenbhais@outlook.com
 
-🐙[ GitHub Profile](https://github.com/MomenBhais)
+---
 
-📧 momenbhais@outlook.com
+## 📜 License
 
-📜 License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-⚠️ Disclaimer
-This project is intended for research and educational purposes only. It is not approved as a clinical tool and should not be used for self-diagnosis or treatment decisions.
+---
+
+## ⚠️ Disclaimer
+
+This project is intended for research and hackathon/demo purposes only. It is not a certified clinical tool and must not be used for medical diagnosis or treatment decisions.
