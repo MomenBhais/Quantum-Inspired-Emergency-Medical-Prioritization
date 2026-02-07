@@ -13,7 +13,7 @@
 
 The **PulmoAI Detection App** is an advanced AI-powered diagnostic system that detects **COVID-19**, **Viral Pneumonia**, and **normal lung conditions** using both **chest X-ray images** and **cough audio recordings**.
 
-The project was honored with **7th place** in the **Arab AI Olympiad 2025**, showcasing the power of dual-modal AI systems in real-world healthcare settings.
+The project was honored with **7th place** in the **Arab AI Olympiad 2026**, showcasing the power of dual-modal AI systems in real-world healthcare settings.
 
 ---
 
